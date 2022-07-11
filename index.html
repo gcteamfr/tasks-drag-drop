@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      table,
+      td,
+      th {
+        border: 1px solid #dee2e681;
+      }
+
+      table {
+        border-collapse: collapse;
+      }
+
+      .container {
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+        /* padding: 3em; */
+      }
+
+      .agents {
+        width: 100%;
+      }
+
+      .scale {
+        text-align: center;
+      }
+
+      #agents {
+        font-size: 25px;
+        text-align: center;
+        padding-right: 3em;
+      }
+
+      #conseqScale {
+        height: 35px;
+      }
+
+      .agentDiv {
+        width: 40%;
+      }
+      .agent {
+        text-align: center;
+      }
+
+      .agent-asc::after {
+        content: "\25b4";
+        margin-left: 0.5em;
+      }
+
+      .agent-desc::after {
+        content: "\25be";
+        margin-left: 0.5em;
+      }
+
+      .tasksDiv {
+        width: 45%;
+        height: 300px;
+      }
+
+      .probaTitle {
+        font-size: 25px;
+        writing-mode: vertical-lr;
+        text-orientation: sideways-right;
+        text-align: center;
+        transform: rotate(180deg);
+      }
+
+      .probaScale {
+        height: 30px;
+        width: 85px;
+        text-align: center;
+      }
+
+      .numberProba {
+        height: 30px;
+        width: 45px;
+        text-align: center;
+      }
+      .container h1 {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+      }
+
+      .events {
+        width: 160%;
+      }
+
+      .interDiv {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      .box-inter {
+        width: 12%;
+        border: 1px solid #dee2e658;
+        padding: 0.5em;
+        margin: 0.2em;
+        cursor: move;
+      }
+
+      .dropped {
+        background: #06711d35;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="agentDiv">
+        <h1>Planning</h1>
+        <div id="planning"></div>
+      </div>
+
+      <div class="tasksDiv">
+        <h1>Interventions</h1>
+        <div id="events"></div>
+      </div>
+    </div>
+  </body>
+  <script src="app.js"></script>
+</html>
