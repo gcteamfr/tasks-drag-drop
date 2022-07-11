@@ -1,6 +1,22 @@
-const planning = document.getElementById('planning');
-const planningTable =
-    `<table class="agents"> 
+const planning = document.getElementById("planning");
+const events = document.getElementById("events");
+const divInter = document.getElementsByClassName("interDiv");
+const interventions = [
+    "intervention 1",
+    "intervention 2",
+    "intervention 3",
+    "intervention 4",
+    "intervention 5",
+    "intervention 6",
+    "intervention 7",
+    "intervention 8",
+    "intervention 9",
+    "intervention 10",
+    "intervention 11",
+    "intervention 12",
+];
+
+const planningTable = `<table class="agents"> 
 <thead>
 <tr>
 <th></th>
@@ -68,77 +84,49 @@ const planningTable =
 </tbody>
 </table>`;
 
-planning.innerHTML = planningTable;
+const eventsDiv = `  <div class="interDiv">
+</div>`;
 
-const events = document.getElementById('events');
-const eventsDiv =
-    `  <div class="interDiv">
-    </div>`;
+let interventionOnDrag = null;
 
-events.innerHTML = eventsDiv;
-
-
-var interventions = ["intervention 1", "intervention 2", "intervention 3", "intervention 4", "intervention 5", "intervention 6", "intervention 7", "intervention 8", "intervention 9", "intervention 10", "intervention 11", "intervention 12"]
-var divInter = document.getElementsByClassName('interDiv');
-
-divInter[0].innerHTML = interventions.map((intervention) => { return `<div class="box-inter" draggable="true">${intervention}</div>` }).join('');
-
-const draggables = document.querySelector('.interDiv');
-const containers = document.querySelectorAll('.cell');
-
-
-// draggables.forEach((draggable) => {
-//     draggable.addEventListener('dragstart', dragStart);
-//     draggable.addEventListener('dragend', dragEnd);
-// })
-
-let elements = Array.from(draggables).map(el => {
-    return el.children[0];
-})
-// containers.forEach((container) => {
-//     container.addEventListener('dragover', () => {
-//         const draggable = document.querySelector('.box-inter');
-//         container.appendChild(draggable)
-//     })
-// })
-
-
-// draggables.addEventListener('dragstart', dragStart);
-// draggables.addEventListener('dragend', dragEnd);
-
-
-for (const container of containers) {
-    container.addEventListener('dragover', dragOver);
-    container.addEventListener('dragenter', dragEnter);
-    container.addEventListener('dragleave', dragLeave);
-    container.addEventListener('drop', dragDrop);
-
+function displayPlanningAndIntervention() {
+    planning.innerHTML = planningTable;
+    events.innerHTML = eventsDiv;
 }
-
-function dragStart() {
-    this.className += 'hold';
-    setTimeout(() => (this.className = 'invisible'), 0)
-}
-
-function dragEnd() {
-    this.className += 'box-inter';
-}
-
-function dragOver(e) {
-    e.preventDefault();
-}
-
-function dragEnter(e) {
-    e.preventDefault();
-    this.className += '';
-}
-
-function dragLeave() {
-    this.className += ''
-}
+displayPlanningAndIntervention();
 
 function dragDrop() {
-    this.className += ' dropped';
-    this.append(elements)
-    console.log("elements", elements)
+    const draggables = document.getElementsByClassName("box-inter");
+    let elements = Array.from(draggables).map((el, i) => {
+        if (i === interventionOnDrag) { return el.innerHTML; }
+
+    }).join(' ');
+    this.className += " dropped";
+    this.append(elements);
+    console.log("elements", elements);
 }
+
+function onDrag(i) {
+    interventionOnDrag = i;
+}
+
+function initIntervention() {
+    divInter[0].innerHTML = interventions
+        .map((intervention, i) => {
+            return `<div class="box-inter" data-intervention="${i}" draggable="true" ondragstart=onDrag(${i})>${intervention}</div>`;
+        })
+        .join("");
+}
+initIntervention();
+
+function onDrop() {
+    const containers = document.querySelectorAll(".cell");
+
+    for (const container of containers) {
+        container.addEventListener("dragover", (e) => e.preventDefault());
+        container.addEventListener("dragenter", (e) => e.preventDefault());
+        container.addEventListener("dragleave", (e) => e.preventDefault());
+        container.addEventListener("drop", dragDrop);
+    }
+}
+onDrop();
