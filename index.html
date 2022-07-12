@@ -18,9 +18,11 @@
 
       .container {
         width: 100%;
+        height: 100%;
         display: flex;
-        justify-content: space-evenly;
-        /* padding: 3em; */
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
       }
 
       .agents {
@@ -42,25 +44,22 @@
       }
 
       .agentDiv {
-        width: 40%;
+        width: 90%;
+        padding: 3em 3em;
       }
       .agent {
         text-align: center;
-      }
-
-      .agent-asc::after {
-        content: "\25b4";
-        margin-left: 0.5em;
-      }
-
-      .agent-desc::after {
-        content: "\25be";
-        margin-left: 0.5em;
+        border: 1px solid red;
       }
 
       .tasksDiv {
-        width: 45%;
-        height: 300px;
+        width: 100%;
+        height: 100%;
+        padding: 1em;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
       }
 
       .probaTitle {
@@ -96,10 +95,12 @@
         width: 100%;
         display: flex;
         flex-wrap: wrap;
+        align-items: center;
+        padding: 2em;
       }
 
       .box-inter {
-        width: 12%;
+        width: auto;
         border: 1px solid #dee2e658;
         padding: 0.5em;
         margin: 0.2em;
@@ -108,6 +109,28 @@
 
       .dropped {
         background: #06711d35;
+      }
+
+      .box-intervention {
+        background-color: #06711d35;
+        margin: 1em;
+        height: 150px;
+        width: 200px;
+        border-radius: 7px;
+        border: 1px solid #e1dfdfc3;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .cell {
+        border: 1px solid blue;
+        height: 120px;
+        width: 300px;
+      }
+      #title,
+      #agents {
+        border: 1px solid blue;
       }
     </style>
   </head>
@@ -121,8 +144,7 @@
 
       <div class="tasksDiv">
         <h1>Interventions</h1>
-        <div id="events">
-        </div>
+        <div id="events"></div>
       </div>
     </div>
   </body>

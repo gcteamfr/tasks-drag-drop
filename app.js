@@ -1,3 +1,5 @@
+
+
 const planning = document.getElementById("planning");
 const events = document.getElementById("events");
 const divInter = document.getElementsByClassName("interDiv");
@@ -20,7 +22,7 @@ const employee = ["Michel", "Julien", "Alexandre", "Bernard", "Anthony"];
 const planningTable = `<table class="agents"> 
 <thead>
 <tr>
-<th id="agents" class="titleAllAgents" onclick="sortAgentsByName()">Agents</th>
+<th id="agents" class="titleAllAgents">Agents</th>
 <th id="title">Lundi</th>
 <th id="title">Mardi</th>
 <th id="title">Mercredi</th>
@@ -41,11 +43,12 @@ let interventionOnDrag = null;
 function displayPlanningAndIntervention() {
     planning.innerHTML = planningTable;
     events.innerHTML = eventsDiv;
+    sortAgentsByName()
 }
 displayPlanningAndIntervention();
 
 function dragDrop() {
-    const draggables = document.getElementsByClassName("box-inter");
+    const draggables = document.getElementsByClassName("box-intervention");
     let elements = Array.from(draggables)
         .map((el, i) => {
             if (i === interventionOnDrag) {
@@ -57,7 +60,6 @@ function dragDrop() {
         .join(" ");
     this.className += " dropped";
     this.append(elements);
-    console.log("elements", elements);
 }
 
 function onDrag(i) {
@@ -80,6 +82,7 @@ function initAgent() {
             </tr>`;
         })
         .join("");
+    (e) => e.preventDefault();
 }
 
 initAgent();
@@ -87,7 +90,7 @@ initAgent();
 function initIntervention() {
     divInter[0].innerHTML = interventions
         .map((intervention, i) => {
-            return `<div class="box-inter" data-intervention="${i}" draggable="true" ondragstart=onDrag(${i})>${intervention}</div>`;
+            return `<div class="box-intervention" data-intervention="${i}" draggable="true" ondragstart=onDrag(${i})>${intervention}</div>`;
         })
         .join("");
 }
@@ -106,10 +109,8 @@ function onDrop() {
 onDrop();
 
 function sortAgentsByName() {
-    let agents = document.querySelectorAll(".agent");
-    console.log("hello lala", employee);
     employee.sort();
-    console.log('end', employee);
+    (e) => e.preventDefault();
     initAgent()
 }
 
