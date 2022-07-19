@@ -18,15 +18,14 @@
 
       .container {
         width: 100%;
-        height: 100%;
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         justify-content: center;
         align-items: center;
       }
 
       .agents {
-        width: 100%;
+        width: 80%;
       }
 
       .scale {
@@ -43,22 +42,18 @@
         height: 35px;
       }
 
-      .agentDiv {
-        width: 90%;
-        padding: 3em 3em;
-      }
+     
       .agent {
         text-align: center;
-        border: 1px solid red;
+      }
+
+      #planning{
+        width: 100%;
       }
 
       .tasksDiv {
-        width: 100%;
+        width: 45%;
         height: 100%;
-        padding: 1em;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
         align-items: center;
       }
 
@@ -94,9 +89,9 @@
       .interDiv {
         width: 100%;
         display: flex;
+        flex-direction: column; 
         flex-wrap: wrap;
         align-items: center;
-        padding: 2em;
       }
 
       .box-inter {
@@ -108,29 +103,27 @@
       }
 
       .dropped {
+        border: 1px solid rgba(150, 150, 150, 0.434);
         background: #06711d35;
+        width: 100px;
+        height: 10px;
       }
 
       .box-intervention {
-        background-color: #06711d35;
         margin: 1em;
-        height: 150px;
-        width: 200px;
+        height: 20px;
+        width: 110px;
         border-radius: 7px;
         border: 1px solid #e1dfdfc3;
+        box-shadow: 2px 3px 1px 1px rgba(0, 0, 0, 0.037);
         display: flex;
         align-items: center;
         justify-content: center;
       }
 
       .cell {
-        border: 1px solid blue;
         height: 120px;
         width: 300px;
-      }
-      #title,
-      #agents {
-        border: 1px solid blue;
       }
     </style>
   </head>

@@ -58,6 +58,7 @@ function dragDrop() {
             }
         })
         .join(" ");
+    this.className -= "cell";
     this.className += " dropped";
     this.append(elements);
 }
