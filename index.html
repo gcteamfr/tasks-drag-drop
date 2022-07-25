@@ -4,142 +4,117 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Planning</title>
     <style>
-      table,
-      td,
-      th {
-        border: 1px solid #dee2e681;
+      * {
+        font-family: sans-serif;
       }
-
-      table {
-        border-collapse: collapse;
+      body {
+        margin: 0;
       }
 
       .container {
+        height: 100vh;
         width: 100%;
         display: flex;
-        flex-direction: row;
-        justify-content: center;
         align-items: center;
       }
-
-      .agents {
-        width: 80%;
-      }
-
-      .scale {
-        text-align: center;
-      }
-
-      #agents {
-        font-size: 25px;
-        text-align: center;
-        padding-right: 3em;
-      }
-
-      #conseqScale {
-        height: 35px;
-      }
-
-     
-      .agent {
-        text-align: center;
-      }
-
-      #planning{
-        width: 100%;
-      }
-
-      .tasksDiv {
-        width: 45%;
+      .container--planning {
         height: 100%;
-        align-items: center;
+        width: 80%;
+        padding: 1em;
       }
-
-      .probaTitle {
-        font-size: 25px;
-        writing-mode: vertical-lr;
-        text-orientation: sideways-right;
-        text-align: center;
-        transform: rotate(180deg);
+      .container--interventions {
+        height: 100%;
+        width: 20%;
+        padding: 1em;
       }
-
-      .probaScale {
-        height: 30px;
-        width: 85px;
-        text-align: center;
-      }
-
-      .numberProba {
-        height: 30px;
-        width: 45px;
-        text-align: center;
-      }
-      .container h1 {
+      .box-interventions {
+        height: 100%;
         display: flex;
-        flex-wrap: wrap;
+        align-items: center;
         flex-direction: column;
+        padding: 1em;
       }
-
-      .events {
-        width: 160%;
-      }
-
-      .interDiv {
+      .box-intervention {
+        height: 50px;
         width: 100%;
         display: flex;
-        flex-direction: column; 
-        flex-wrap: wrap;
-        align-items: center;
-      }
-
-      .box-inter {
-        width: auto;
-        border: 1px solid #dee2e658;
-        padding: 0.5em;
-        margin: 0.2em;
-        cursor: move;
-      }
-
-      .dropped {
-        border: 1px solid rgba(150, 150, 150, 0.434);
-        background: #06711d35;
-        width: 100px;
-        height: 10px;
-      }
-
-      .box-intervention {
-        margin: 1em;
-        height: 20px;
-        width: 110px;
-        border-radius: 7px;
-        border: 1px solid #e1dfdfc3;
-        box-shadow: 2px 3px 1px 1px rgba(0, 0, 0, 0.037);
-        display: flex;
-        align-items: center;
         justify-content: center;
+        flex-direction: column;
+        border-radius: 4px;
+        margin: 1em 0;
+        padding: 1em;
+        font-weight: 900;
       }
 
-      .cell {
-        height: 120px;
-        width: 300px;
+      .box-intervention--pending {
+        background-color: rgba(255, 226, 255, 0.389);
+        border: 3px solid rgba(221, 105, 221, 0.451);
+      }
+      .box-intervention--running {
+        background-color: rgba(203, 230, 253, 0.389);
+        border: 3px solid rgba(43, 140, 219, 0.451);
+      }
+      .box-intervention--closed {
+        background-color: rgba(211, 211, 211, 0.389);
+        border: 3px solid rgb(138, 138, 138, 0.451);
+      }
+
+      .box-intervention .intervention-status {
+        font-size: 0.9em;
+        color: rgb(170, 169, 169);
+        font-weight: 300;
+        margin-top: 0.5em;
+      }
+      .box-intervention--dropped {
+        height: 30px;
+        width: 80%;
+        padding: 1em;
+        font-size: 0.8em;
+      }
+      .thead-cell {
+        background-color: rgba(182, 182, 255, 0.216);
+        height: 70px;
+        width: 10%;
+      }
+      .row {
+        background-color: rgba(240, 240, 240, 0.385);
+        height: 130px;
+      }
+      .tbody-cell {
+        padding: 1em;
+      }
+      .tbody-cell--agent-name {
+        font-weight: 900;
       }
     </style>
   </head>
 
   <body>
     <div class="container">
-      <div class="agentDiv">
-        <h1>Planning</h1>
-        <div id="planning"></div>
+      <div class="container--planning">
+        <div class="box-planning">
+          <table id="planning">
+            <thead>
+              <tr>
+                <th class="thead-cell">Liste des agents</th>
+                <th class="thead-cell">Lundi</th>
+                <th class="thead-cell">Mardi</th>
+                <th class="thead-cell">Mercredi</th>
+                <th class="thead-cell">Jeudi</th>
+                <th class="thead-cell">Vendredi</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
       </div>
-
-      <div class="tasksDiv">
+      <div class="container--interventions">
         <h1>Interventions</h1>
-        <div id="events"></div>
+        <div class="box-interventions"></div>
       </div>
     </div>
   </body>
-  <script src="app.js"></script>
+  <script src="index.js"></script>
 </html>
